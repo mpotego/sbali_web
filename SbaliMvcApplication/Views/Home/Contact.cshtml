@@ -1,0 +1,86 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+
+@Scripts.Render("http://maps.google.com/maps/api/js?sensor=false")
+
+
+@section Scripts{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            var latlng = new google.maps.LatLng(37.869565, -122.258786);
+
+            var myOptions = {
+                zoom: 17,
+                center: latlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            var map = new google.maps.Map(document.getElementById("map_canvas"),
+                myOptions);
+
+            // Creating a marker and positioning it on the map  
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(37.869565, -122.258786),
+                map: map
+            });
+
+        });
+
+
+    </script>
+}
+
+<hgroup class="title">
+    <h1>Our Contact Details.</h1>
+</hgroup>
+<div style="display:block; float:left">
+    <section class="contact">
+        <header>
+            <h3>Phone</h3>
+        </header>
+
+        <p>
+            <span class="label">Telephone Number:</span><br />
+            <span>011 367 7865</span>
+        </p>
+        <p>
+            <span class="label">Cell Numbers:</span><br />
+
+            <span>073 168 5075</span><br />
+            <span>073 579 1351</span><br />
+            <span>073 901 5146</span><br />
+            <span>078 534 7540</span><br />
+
+        </p>
+
+    </section>
+
+    <section class="contact">
+        <header>
+            <h3>Email</h3>
+        </header>
+        <p>
+            <span><a href="mailto:tkmsowetoplumbers@telkomsa.net ">tkmsowetoplumbers@telkomsa.net</a></span>
+        </p>
+    </section>
+
+    <section class="contact">
+        <header>
+            <h3>Address</h3>
+        </header>
+        <p>
+            17 Kgokong Street
+       <br />
+            Diepkloof,
+       <br />
+            Soweto,
+       <br />
+            0001
+        </p>
+    </section>
+</div>
+<div id="map_canvas" style="width: 400px; height: 250px; border: solid; border-color:green; border-width: 1px; float: right; display: block; margin-right:200px; margin-top:50px">Map goes here.</div>
+

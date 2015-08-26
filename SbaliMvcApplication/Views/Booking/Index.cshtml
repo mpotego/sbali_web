@@ -1,0 +1,205 @@
+﻿@using CaptchaMvc.HtmlHelpers
+@*@using MathCaptcha;*@
+@using CaptchaMvc;
+
+@model SbaliMvcApplication.Models.Booking
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@{
+    List<SelectListItem> problemsOptions = ViewBag.problems;
+    List<SelectListItem> timeslotsOptions = ViewBag.timeslots;
+}
+
+<p>
+    <span class="label">Booking a Plumber made easy!</span>
+    <br />
+    <br />
+    <span class="label">We monitor all incoming calls, e-mails and online bookings on a 24 hour 365 days LIVE!</span>
+    <br />
+    <br />
+    <span class="label">You may use our @Html.ActionLink("Contact", "Contact", "Home") or Book Online Below.</span>
+
+    <br />
+    <br />
+
+    @*    <span class="label">Call our office on : </span>
+    <br />
+    <span style="padding-left: 50px">0731685075</span><br />
+    <span style="padding-left: 50px">0735791351</span><br />
+    <br />
+
+    @ *<hr width="1" size="100"></hr> horizaontal line* @
+
+    <span class="label">Or Email our office at: </span>
+    <br />
+    <span style="padding-left: 50px">bookings@sowetoplumbers.co.za</span><br />
+    <br />
+
+    <span class="label">Or Simply Book Online below and we will be contacting you 
+                    within minutes of receiving your online request!</span>*@
+
+
+</p>
+
+@if (ViewBag.Error != null) { 
+<h3 style="color:red">@ViewBag.Error</h3>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <table>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Problem)
+            </td>
+            <td>
+                @Html.DropDownListFor(model => model.Problem, problemsOptions, new { style = "width:310px" })
+            </td>
+            <td>
+                @Html.ValidationMessageFor(model => model.Problem)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Name)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.Name, new {@class="textboxStyle"})
+            </td>
+            <td>
+                @Html.ValidationMessageFor(model => model.Name)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Surname)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.Surname, new {@class="textboxStyle"})
+            </td>
+            <td>
+                @Html.ValidationMessageFor(model => model.Surname)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Email)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.Email, new {@class="textboxStyle"})
+            </td>
+            <td>
+                @Html.ValidationMessageFor(model => model.Email)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Cell)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.Cell, new {@class="textboxStyle"})
+            </td>
+            <td>
+                @Html.ValidationMessageFor(model => model.Cell)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Location)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.Location, new {@class="textboxStyle"})
+            </td>
+            <td>
+                @Html.ValidationMessageFor(model => model.Location)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Surbub)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.Surbub, new {@class="textboxStyle"})
+            </td>
+            <td>
+                @Html.ValidationMessageFor(model => model.Surbub)
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.TimeSlot)
+            </td>
+            <td>
+                @Html.DropDownListFor(model => model.TimeSlot, timeslotsOptions, new { style = "width:310px" })
+            </td>
+            <td>
+                @Html.ValidationMessageFor(model => model.TimeSlot)
+            </td>
+        </tr>
+
+        <tr>
+
+            <td colspan="2">
+                @Html.Captcha(3, null)
+            </td>
+
+            <td>
+                @ViewBag.CaptchaErrMessage
+            </td>
+        </tr>
+
+        <tr>
+            <td style="text-align: left">
+                @*<input type="submit" value="Cancel" />*@
+            </td>
+
+            <td style="text-align: right">
+                <input type="submit" value="Create" />
+            </td>
+
+            <td></td>
+        </tr>
+    </table>
+
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+     @* <style type="text/css">
+        
+          .textboxStyle {
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            border: 1px solid #C2C2C2;
+            box-shadow: 1px 1px 4px #EBEBEB;
+            -moz-box-shadow: 1px 1px 4px #EBEBEB;
+            -webkit-box-shadow: 1px 1px 4px #EBEBEB;
+            border-radius: 3px;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            padding: 7px;
+            outline: none;
+        }
+
+            .textboxStyle:focus {
+                border: 1px solid #00405d;
+            }
+
+    </style>*@
+  
+}

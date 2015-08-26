@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <header>
+        
+        <div class="content-wrapper">
+            
+            <div class="float-left">
+                <p class="site-title">
+                    @*@Html.ActionLink("your logo here", "Index", "Home")*@
+                     <a href="@Url.Action("Index", "Home")">
+        <img src="~/Images/Logo4.png" height="100px" width="200px" alt="" />
+    </a>
+                </p>
+            </div>
+
+            <div class="float-right">
+                <label style="text-align:right">Emergency Number</label>
+                <label style="text-align:right">011 367 7865</label>
+             </div>
+               
+
+        </div>
+       @* 
+        <br />
+        <br />
+        <br />
+        *@
+       
+
+    </header>
+
+     <div class="content-wrapper">
+            @*<div id="menu">*@
+            <ul id="nav">
+                <li 
+                        class='@(string.Equals(@ViewBag.activeTab, "Home", StringComparison.CurrentCultureIgnoreCase) ? "ActiveNavigation" : "")'
+                        >@Html.ActionLink("Home", "Index", "Home")</li>
+                <li
+                         class='@(string.Equals(@ViewBag.activeTab, "Services", StringComparison.CurrentCultureIgnoreCase) ? "ActiveNavigation" : "")'
+                        >@Html.ActionLink("Services", "Index", "Services")</li>
+                <li 
+                        class='@(string.Equals(@ViewBag.activeTab, "Book", StringComparison.CurrentCultureIgnoreCase) ? "ActiveNavigation" : "")'
+                        >@Html.ActionLink("Book Us", "Index", "Booking")</li>
+                <li 
+                        class='@(string.Equals(@ViewBag.activeTab, "Contact", StringComparison.CurrentCultureIgnoreCase) ? "ActiveNavigation" : "")'
+                        >@Html.ActionLink("Contact", "Contact", "Home")</li>
+                <li 
+                        class='@(string.Equals(@ViewBag.activeTab, "About", StringComparison.CurrentCultureIgnoreCase) ? "ActiveNavigation" : "")'
+                        >@Html.ActionLink("About", "About", "Home")</li>
+                
+            </ul>
+            @*</div>*@
+        </div>
+
+    <div id="body">
+        @RenderSection("featured", required: false)
+        <section class="content-wrapper main-content clear-fix">
+            @RenderBody()
+        </section>
+    </div>
+
+
+    <footer>
+        <div class="content-wrapper">
+
+            <hr style="background-color:#008000; color:#008000; border-color:#008000; height:5px" />
+            @*<div class="float-left">*@
+            
+            <table style="width: 100%">
+                <tr>
+                    <td style="text-align: left; vertical-align:top; width: 30%;">
+                       @* <button class="AdminLogin">Admin Login</button> 
+                        <br />
+                        <br />
+                        <br />*@
+                       <a>Developed by @@015</a>
+
+                    </td>
+
+                    <td style="text-align: center; vertical-align:top; width: 40%;">
+                         @*<p style="font-size:medium">&copy; @DateTime.Now.Year - @Html.ActionLink("Soweto Plumbers", "Index","Home")</p>*@
+                         <label >&copy; @DateTime.Now.Year - @Html.ActionLink("Soweto Plumbers", "Index","Home")</label>
+                       
+                    </td>
+
+                    <td style="width: 30%;"  >
+                     
+                        <span style="font-size:medium;margin-left:200px;">Follow us on: </span>
+                        <br />
+                     
+                        <button class="facebook">Facebook</button>
+                        <br />
+
+                        <button class="twitter">Twitter</button>
+                        <br />
+                    </td>
+                </tr>
+                
+            </table>
+        </div>
+        @*</div>*@
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+
+     @*Draw a line at the bottom of the page <div class="fixed"></div>*@
+</body>
+
+   
+
+</html>
